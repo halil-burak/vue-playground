@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Product App</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <div class="nav-bar"></div>
+        <div id="app">
+            <div>
+                <div class="cart">
+                    <p>Cart({{ cart }})</p>
+                </div>
+                <product :premium="premium" @add-to-cart="updateCart" 
+                                            @remove-from-cart="removeFromCart">
+                </product>
+            </div>
+            <div>
+                <a v-bind:href="link">Click here</a>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
