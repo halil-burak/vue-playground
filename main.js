@@ -17,7 +17,6 @@ Vue.component('product', {
                 <p v-if="onSale">It's on sale! Yay!</p>
                 <p v-else>Out of sale</p>
                 <p>User is <span v-if="premium">premium</span><span v-else>not premium</span>
-                <p>Shipping for {{ shipping }}</p>
 
                 <product-detail :details="details"></product-detail>
 
@@ -39,7 +38,7 @@ Vue.component('product', {
 
                 <button @click="decrementCart">Remove from cart</button>
 
-                <product-tabs :reviews="reviews"></product-tabs>
+                <product-tabs :reviews="reviews" :shipping="shipping"></product-tabs>
             </div>
         </div>
     `,
@@ -191,7 +190,11 @@ Vue.component('product-tabs', {
         reviews: {
             type: Array,
             required: false
-          }
+        },
+        shipping: {
+            type: Number,
+            required: true
+        }
     },
     template: `
         <div>
@@ -215,19 +218,17 @@ Vue.component('product-tabs', {
             <div v-show="selectedTab === 'Make a Review'">
               <product-review></product-review>        
             </div>
+
+            <div v-show="selectedTab === 'Shipment'">
+                <p>Shipping for this product will be {{ shipping }}</p>
+            </div>
         </div>
     `,
     data() {
         return {
-            tabs: ['Reviews', 'Make a Review'],
+            tabs: ['Reviews', 'Make a Review', 'Shipment'],
             selectedTab: 'Reviews'
         }
-    },
-    methods: {
-
-    },
-    computed: {
-
     }
 })
 
