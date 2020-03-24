@@ -192,7 +192,7 @@ Vue.component('product-tabs', {
             required: false
         },
         shipping: {
-            type: Number,
+            type: String,
             required: true
         }
     },
